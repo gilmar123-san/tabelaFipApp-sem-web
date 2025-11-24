@@ -6,5 +6,5 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public record DadosModeloVeiculo(@JsonAlias("modelos") List<ModeloVeiculo> modelos) {
+public record DadosModeloVeiculo(@JsonAlias("modelos") List<DadosVeiculo> modelos) {
 }

@@ -1,6 +1,9 @@
 package br.com.veiclo.tabelaFipApp.model.menu;
 
-import br.com.veiclo.tabelaFipApp.model.entities.*;
+import br.com.veiclo.tabelaFipApp.model.entities.AnoVeiculo;
+import br.com.veiclo.tabelaFipApp.model.entities.DadosModeloVeiculo;
+import br.com.veiclo.tabelaFipApp.model.entities.DadosVeiculo;
+import br.com.veiclo.tabelaFipApp.model.entities.Veiculo;
 import br.com.veiclo.tabelaFipApp.model.services.ConsumoAPI;
 import br.com.veiclo.tabelaFipApp.model.services.ConverteDados;
 
@@ -23,7 +26,7 @@ public class MenuPrincipal {
         var opcao = leitor.nextInt();
 
         var urlRequest = String.format("%s%s/marcas", DEFAULT_URL, getAutomovelConsulta(opcao));
-        var marcas = conversor.obterLista(consulta.obterDados(urlRequest), MarcaVeiculo.class);
+        var marcas = conversor.obterLista(consulta.obterDados(urlRequest), DadosVeiculo.class);
 
         if(marcas.isEmpty()) {
             System.out.println("Nenhuma marca encontrada!");
@@ -31,7 +34,7 @@ public class MenuPrincipal {
         }
 
         marcas.stream()
-                .sorted(Comparator.comparingInt(MarcaVeiculo::codigo))
+                .sorted(Comparator.comparingInt(DadosVeiculo::codigo))
                 .map(m -> String.format("Cód: %d - Descrição: %s", m.codigo(), m.nome()))
                 .forEach(System.out::println);
 
@@ -48,7 +51,7 @@ public class MenuPrincipal {
 
         System.out.println();
         modelo.modelos().stream()
-                .sorted(Comparator.comparingInt(ModeloVeiculo::codigo))
+                .sorted(Comparator.comparingInt(DadosVeiculo::codigo))
                 .map(m -> String.format("Cód: %d - Descrição: %s", m.codigo(), m.nome()))
                 .forEach(System.out::println);
 

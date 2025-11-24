@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ConverteDados implements IConverteDados {
 
-    ObjectMapper mapper = new ObjectMapper();
+    private ObjectMapper mapper = new ObjectMapper();
 
     @Override
     public <T> T converteDados(String json, Class<T> classe) {
